@@ -5,8 +5,9 @@ const port = 3000
 
 const app = express();
 
-// MiddleWare
+// MiddleWare 
 app.use(express.json());
+app.use(logger);
 app.use("/authors", authorRoute);
 
 app.get("/", (req, res) => {
