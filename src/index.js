@@ -1,9 +1,14 @@
 const express = require("express");
+const app = express();
+
+const logger = require("./logger");
+
 const authorRoute = require("../src/routes/author.route");
+
 const localhost = "localhost"
 const port = 3000
 
-const app = express();
+
 
 // MiddleWare 
 app.use(express.json());
@@ -11,7 +16,7 @@ app.use(logger);
 app.use("/authors", authorRoute);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Hello World" });
+    res.status(200).json({ message: "Hello World" });
 });
 
 app.all("*", (req, res) => {
